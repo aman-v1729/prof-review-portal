@@ -1,0 +1,60 @@
+{% extends "review/base.html" %}
+
+{% block title %}
+{{ course.name }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ course.name }}: <small>{{ course.title }}
+</small></h1>
+<p><b>Department: {{ course.dept.dept }}</b></p>
+<p>{{ course.info }}</p>
+<br>
+
+{% if ct == 0 %}
+<h4>No Reviews Found</h4>
+{% endif %}
+{% if ct ==  1 %}
+	<h2>1 Review found:</h2>
+{% endif %}
+
+{% if ct > 1 %}
+	<h2>{{ ct }} Reviews found:</h2>
+{% endif %}
+
+Add your own review <a href="{% url 'course-review-create' course.name %}">here</a>!
+<br><br>
+{% for review in matches %}
+<div class = "review">	
+	<h4><a href="{% url 'course-review-detail' review.course.name review.id %}">{{ review.title }}</a></h4>
+	Written by 
+	{% if review.anonymous %}
+		anonymous
+	{% else %}
+		{{ review.author.username }}, Respect Points: {{ review.author.profile.rp }}
+	{% endif %}
+	<br>
+	Course Difficulty: {{ review.course_difficulty }}.0/10.0
+	<br>
+	Date: {{review.date_posted|date:"m F, Y"}}
+	<br><br><p>{{ review.review }}</p>
+	<a href = "#" onClick = "document.getElementById('likebutton{{review.id}}').submit()">Like:</a> {{ review.likes }}
+	&nbsp&nbsp<a href = "#" onClick = "document.getElementById('dislikebutton{{review.id}}').submit()">Dislike:</a> {{ review.dislikes }}
+	&nbsp&nbsp<a href = "#" onClick = "document.getElementById('report{{review.id}}').submit()">Report:</a> {{ review.reports }}
+
+	<form id = "likebutton{{ review.id }}" method = "POST" action = "{% url 'course-review-pref' review.course.name review.id 1 %}">
+		{% csrf_token %}
+		<input type="hidden">
+	</form>
+	<form id = "dislikebutton{{ review.id }}" method = "POST" action = "{% url 'course-review-pref' review.course.name review.id 2 %}">
+		{% csrf_token %}
+		<input type="hidden">
+	</form>
+	<form id = "report{{ review.id }}" method = "POST" action = "{% url 'course-review-report' review.course.name review.id %}">
+		{% csrf_token %}
+		<input type="hidden">
+	</form>
+	<br><br>
+</div>
+{% endfor %}
+{% endblock %}

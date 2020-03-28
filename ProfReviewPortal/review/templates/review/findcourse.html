@@ -1,0 +1,36 @@
+{% extends "review/base.html" %}
+
+{% block title %}
+FIND Course
+{% endblock %}
+
+{% block content %}
+
+<h1>Find a Course!</h1>
+<form method = "POST">
+	{% csrf_token %}
+	<input list = "crslist" name = "cname" autocomplete = "off" placeholder="Search!" >
+	<datalist id = "crslist">
+		{% for course in courses %}
+		    <option value="{{ course.name }}">
+		{% endfor %}
+	</datalist>
+	<br><br>
+	<button class = "btn btn-info" type = "submit">FIND!</button>
+</form>
+<br>
+Can't find a Course? Click <a href="{% url 'addcourse' %}">here</a> to add!
+<br><br>
+{% if ct == 1 %}
+<h3>{{ ct }} Result found:</h3>
+{% endif %}
+
+{% if ct > 1 %}
+<h3>{{ ct }} Results found:</h3>
+{% endif %}
+<ul>
+{% for match in matches %}
+	<li><a href="{% url 'review-find-course-name' match.name %}">{{ match.name }}</a>: {{ match.title }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "review/base.html" %}
+
+{% block title %}
+COURSE Review
+{% endblock %}
+
+{% block content %}
+
+<div class = "review">	
+	<h2>{{ object.course.name }}: {{ object.title }}</h2>
+	Written by 
+	{% if object.anonymous %}
+		anonymous
+	{% else %}
+		{{ object.author.username }}, Respect Points: {{ object.author.profile.rp }}
+	{% endif %}
+	<br>
+	Course Difficulty: {{ object.course_difficulty }}.0/10.0
+	<br>
+	Date: {{object.date_posted|date:"m F, Y"}}
+	<br><br><p>{{ object.review }}</p>
+</div>
+<a href = "#" onClick = "document.getElementById('likebutton{{object.id}}').submit()">Like:</a> {{ object.likes }}
+&nbsp&nbsp<a href = "#" onClick = "document.getElementById('dislikebutton{{object.id}}').submit()">Dislike:</a> {{ object.dislikes }}
+&nbsp&nbsp<a href = "#" onClick = "document.getElementById('report{{object.id}}').submit()">Report:</a> {{ object.reports }}
+
+<form id = "likebutton{{ object.id }}" method = "POST" action = "{% url 'course-review-pref' object.course.name object.id 1 %}">
+	{% csrf_token %}
+	<input type="hidden">
+</form>
+<form id = "dislikebutton{{ object.id }}" method = "POST" action = "{% url 'course-review-pref' object.course.name object.id 2 %}">
+	{% csrf_token %}
+	<input type="hidden">
+</form>
+<form id = "report{{ object.id }}" method = "POST" action = "{% url 'course-review-report' object.course.name object.id %}">
+	{% csrf_token %}
+	<input type="hidden">
+</form>
+{% if user == object.author %}
+	<a href="{% url 'course-review-update' object.course.name object.id %}" class = "btn btn-info">&nbsp &nbsp Edit &nbsp &nbsp </a>&nbsp &nbsp &nbsp
+	<a href="{% url 'course-review-delete' object.course.name object.id %}" class = "btn btn-danger">&nbspDelete&nbsp</a>
+{% endif %}
+
+
+
+<br><br><a href="{% url 'review-find-course-name' object.course.name %}">Back</a> to {{ object.course.name}} Course page
+
+{% endblock %}

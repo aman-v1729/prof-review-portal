@@ -1,0 +1,14 @@
+{% extends "review/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+REGISTER
+{% endblock %}
+
+{% block content %}
+<form method = "POST">
+	{% csrf_token %}
+	<h2>Are you sure you want to delete the review "{{ object.title }}"" for {{ object.prof.name }}?</h2>
+	<button type = "submit" class = "btn btn-danger">DELETE!</button>
+	<a href = "{% url 'prof-review-detail' object.prof.id object.id %}" class = "btn btn-outline-info"> Cancel </a>
+</form>
+{% endblock %}

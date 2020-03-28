@@ -1,0 +1,25 @@
+{% extends "review/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+PROFILE
+{% endblock %}
+
+{% block content %}
+<h1>Hi, {{ user.username }}</h1>
+<h3>Respect Points: {{ user.profile.rp }}</h3>
+<br><br><br>
+
+<h2>Your Activity</h2>
+<h4>Professor Reviews</h4>
+<ul>
+{% for prev in prevs %}
+	<li><p>Created <a href = "{% url 'prof-review-detail' prev.prof.id prev.id %}">"{{ prev.title }}"</a> for {{ prev.prof.name }} on {{ prev.date_posted|date:"m F, Y" }}</p></li>
+{% endfor %}
+</ul>
+<h4>Course Reviews</h4>
+<ul>
+{% for crev in crevs %}
+	<li><p>Created <a href = "{% url 'course-review-detail' crev.course.name crev.id %}"> "{{ crev.title }}"</a> for {{ crev.course.name }} on {{ crev.date_posted|date:"m F, Y" }}</p></li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "review/base.html" %}
+
+{% block title %}
+FIND Professor
+{% endblock %}
+
+{% block content %}
+
+<h1>Find a Professor!</h1>
+<form method = "POST">
+	{% csrf_token %}
+	<input list = "proflist" name = "pname" autocomplete = "off" placeholder="Search!">
+	<datalist id = "proflist">
+		{% for prof in profs %}
+		    <option value="{{ prof.name }}">
+			{% endfor %}
+	</datalist>
+	<br><br>
+	<button class = "btn btn-info" type = "submit">FIND!</button>
+</form>
+<br>
+
+Can't find a Professor? Click <a href="{% url 'addprof' %}">here</a> to add!
+
+<br><br>
+
+{% if ct == 1 %}
+<h3>{{ ct }} Result found:</h3>
+{% endif %}
+
+{% if ct > 1 %}
+<h3>{{ ct }} Results found:</h3>
+{% endif %}
+<ul>
+{% for match in matches %}
+
+	<li><a href="{% url 'review-find-prof-name' match.pk %}">{{ match.name }}</a>, {{ match.dept.dept }} Department </li>
+{% endfor %}
+</ul>
+{% endblock %}
