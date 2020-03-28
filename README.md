@@ -1,13 +1,13 @@
 NOTE:
 Please install django crispy forms: pip install django-crispy-forms
 
+ALL MINIMUM AND PREFERRED REQUIREMENTS HAVE BEEN SATISFIED
 
 SPECS:
-
 1. Registration system for IITD students (only using @iitd.ac.in - Email Verification by mailing not added).
 
 2. There are two kinds of “entities” which are reviewed : Professors, and Courses.
-Separate Pages have been made for each Professor and Course. Reviews can be viewed on the page of the particular professor or course. The reviews even have a detail view. They can be created, edited and deleted. Each user can only write one review per professor/course
+Separate Pages have been made for each Professor and Course. Reviews can be viewed on the page of the particular professor or course. The reviews even have a detail view. They can be created, edited and deleted. Each user can only write one review per professor/course. THE AUTHOR CAN EDIT AND DELETE THEIR REVIEW FROM THE DETAIL VIEW WHICH CAN BE ACCESSED BY CLICKING THE TITLE OF THE REVIEW.
 
 3. Guest Users have read only rights.
 
