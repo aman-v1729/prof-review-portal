@@ -3,7 +3,7 @@ SPECS:
 1. Registration system for IITD students (only using @iitd.ac.in - Email Verification by mailing not added).
 
 2. There are two kinds of “entities” which are reviewed : Professors, and Courses.
-Separate Pages have been made for each Professor and Course. Reviews can be viewed on the page of the particular professor or course. The reviews even have a detail view. They can be created, edited and deleted.
+Separate Pages have been made for each Professor and Course. Reviews can be viewed on the page of the particular professor or course. The reviews even have a detail view. They can be created, edited and deleted. Each user can only write one review per professor/course
 
 3. Guest Users have read only rights.
 
@@ -30,6 +30,10 @@ These features are not available for guest users.
 
 
 SALIENT FEATURES:
-1. Like/Dislike (AND RESPECT POINTS OF AUTHOR)
-2. Report
-3. Warnings & Ban (BONUS ASSIGNMENT)
+1. Search Bar
+2. Like/Dislike (AND RESPECT POINTS OF AUTHOR)
+3. Report
+4. Warnings & Ban (BONUS ASSIGNMENT)
+
+Drawbacks:
+1. No separate user logs stored(time deficit)
