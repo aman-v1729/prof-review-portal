@@ -1,6 +1,6 @@
 SPECS:
 
-1.Registration system for IITD students (only using @iitd.ac.in - Email Verification by mailing not added).
+1. Registration system for IITD students (only using @iitd.ac.in - Email Verification by mailing not added).
 
 2. There are two kinds of “entities” which are reviewed : Professors, and Courses.
 Separate Pages have been made for each Professor and Course. Reviews can be viewed on the page of the particular professor or course. The reviews even have a detail view. They can be created, edited and deleted.
