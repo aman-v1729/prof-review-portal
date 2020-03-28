@@ -21,6 +21,7 @@ These features are not available for guest users.
 9. Admin Actions have also been created to BAN users in the User Model. There has two options: 
   i) a 15 day ban
   ii) a permanent ban
+  Banning bans the email-id from re-registering during the duration.
   
 10. The admin can also order the posts according to their date created. This allows a check on the recent activity of the users.
 
