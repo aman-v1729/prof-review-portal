@@ -1,3 +1,7 @@
+NOTE:
+Please install django crispy forms: pip install django-crispy-forms
+
+
 SPECS:
 
 1. Registration system for IITD students (only using @iitd.ac.in - Email Verification by mailing not added).
