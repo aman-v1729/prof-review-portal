@@ -41,3 +41,8 @@ SALIENT FEATURES:
 
 Drawbacks:
 1. No separate user logs stored(time deficit)
+
+
+
+PART 1:
+https://docs.google.com/document/d/1wZjWolhnYoU0lpHIJt-5kDbk4d6OWOfLwI4hrdtIGoA/edit?usp=sharing
